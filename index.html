@@ -3,510 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABAPORU — Moda Brasileira</title>
+    <title>VEREDAS — Caminhos que Vestem</title>
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        papel: '#FBF7F0',
-                        amarelo: { DEFAULT: '#F5B82E', light: '#FFD35A', dark: '#D89A12' },
-                        cobalto: { DEFAULT: '#173F5F', dark: '#102C43' },
-                        caatinga: { DEFAULT: '#4D8B59', dark: '#35663F' },
-                        terracota: { DEFAULT: '#C96A4A', dark: '#9F4C32' },
-                        caju: { DEFAULT: '#B93E2F', dark: '#8D2D23' },
-                        sol: '#2B211C'
-                    },
-                    fontFamily: {
-                        display: ['"Bricolage Grotesque"', 'sans-serif'],
-                        syne: ['Syne', 'sans-serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root { color-scheme: light; }
-
-        html { overflow-x: hidden; }
-
-        body {
-            background:
-                radial-gradient(circle at 10% 8%, rgba(245,184,46,.10), transparent 24rem),
-                radial-gradient(circle at 92% 22%, rgba(77,139,89,.08), transparent 22rem),
-                #FBF7F0;
-        }
-
-        .organic-a { border-radius: 57% 43% 61% 39% / 42% 62% 38% 58%; }
-        .organic-b { border-radius: 40% 60% 38% 62% / 57% 34% 66% 43%; }
-        .organic-c { border-radius: 62% 38% 50% 50% / 34% 61% 39% 66%; }
-
-        .ink-frame {
-            border: 2px solid #2B211C;
-            box-shadow: 5px 5px 0 #2B211C;
-        }
-
-        .soft-frame {
-            border: 2px solid #2B211C;
-            box-shadow: 3px 3px 0 rgba(43,33,28,.9);
-        }
-
-        .organic-btn {
-            border-radius: 999px;
-            transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
-        }
-
-        .organic-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 3px 3px 0 #2B211C;
-        }
-
-        .product-card {
-            transition: transform .2s ease, box-shadow .2s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 5px 5px 0 #2B211C;
-        }
-
-        .marquee {
-            animation: marquee 24s linear infinite;
-            width: max-content;
-        }
-
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-33.333%); }
-        }
-
-        .editorial-cut {
-            clip-path: polygon(0 8%, 88% 0, 100% 90%, 10% 100%);
-        }
-
-        .grain {
-            position: relative;
-            isolation: isolate;
-        }
-
-        .grain::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            opacity: .07;
-            pointer-events: none;
-            background-image:
-                radial-gradient(circle at 20% 30%, #2B211C 0 1px, transparent 1.3px),
-                radial-gradient(circle at 70% 60%, #2B211C 0 1px, transparent 1.3px);
-            background-size: 8px 8px, 11px 11px;
-            mix-blend-mode: multiply;
-        }
-
-        .drawer-scroll { overscroll-behavior: contain; }
-
-        @media (max-width: 767px) {
-            .marquee { animation: none; width: auto; }
-            .mobile-hide { display: none !important; }
-            .mobile-full { width: 100%; }
-        }
-
-        @media (min-width: 768px) {
-            .desktop-tight { letter-spacing: -.04em; }
-        }
-    </style>
-</head>
-
-<body class="bg-papel text-sol font-sans antialiased selection:bg-caju selection:text-papel overflow-x-hidden">
-
-    <!-- Lightweight notice -->
-    <div class="bg-caju text-papel text-[10px] sm:text-xs font-syne font-bold uppercase tracking-[0.14em] py-2 overflow-hidden">
-        <div class="marquee flex items-center gap-12 px-4">
-            <span>ABAPORU — moda brasileira</span>
-            <span>✦ produção autoral no Nordeste</span>
-            <span>✦ frete grátis acima de R$ 499</span>
-            <span>ABAPORU — moda brasileira</span>
-            <span>✦ produção autoral no Nordeste</span>
-            <span>✦ frete grátis acima de R$ 499</span>
-        </div>
-    </div>
-
-    <!-- Header -->
-    <header class="sticky top-0 z-40 bg-papel/95 backdrop-blur-md border-b-2 border-sol">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-[68px] flex items-center justify-between gap-4">
-            <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-sol" aria-label="Abrir menu">
-                <i class="fa-solid fa-bars text-lg"></i>
-            </button>
-
-            <a href="#" class="flex items-center gap-2.5 min-w-0">
-                <div class="w-9 h-9 sm:w-10 sm:h-10 bg-amarelo border-2 border-sol organic-a flex items-center justify-center font-display font-extrabold text-lg sm:text-xl text-cobalto shrink-0">
-                    A
-                </div>
-                <div class="leading-none min-w-0">
-                    <div class="font-display font-extrabold text-xl sm:text-2xl text-cobalto tracking-[-0.04em]">ABAPORU</div>
-                    <div class="font-syne text-[8px] sm:text-[9px] uppercase tracking-[0.16em] text-terracota mt-1">Moda brasileira</div>
-                </div>
-            </a>
-
-            <nav class="hidden md:flex items-center gap-1 font-syne text-[11px] font-bold uppercase tracking-wide">
-                <a href="#colecoes" class="px-3 py-2 rounded-full hover:bg-amarelo/50 transition-colors">Coleção</a>
-                <a href="#lookbook" class="px-3 py-2 rounded-full hover:bg-caatinga/20 transition-colors">Editorial</a>
-                <a href="#manifesto" class="px-3 py-2 rounded-full hover:bg-terracota/20 transition-colors">A marca</a>
-            </nav>
-
-            <div class="flex items-center gap-1.5 sm:gap-2">
-                <button id="open-search-btn" class="w-10 h-10 rounded-full border-2 border-sol bg-papel hover:bg-amarelo transition-colors flex items-center justify-center" aria-label="Buscar">
-                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
-                </button>
-
-                <button id="open-cart-btn" class="h-10 px-3 sm:px-4 rounded-full border-2 border-sol bg-caju text-papel flex items-center gap-2 hover:bg-caju-dark transition-colors" aria-label="Abrir sacola">
-                    <i class="fa-solid fa-bag-shopping text-sm"></i>
-                    <span class="hidden sm:inline font-syne text-[10px] font-bold uppercase">Sacola</span>
-                    <span id="cart-count" class="min-w-5 h-5 px-1.5 rounded-full bg-amarelo text-cobalto text-[10px] font-display font-extrabold flex items-center justify-center">0</span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mobile drawer -->
-    <div id="mobile-menu" class="fixed inset-0 z-50 bg-sol/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="fixed inset-y-0 left-0 w-[86%] max-w-sm bg-papel border-r-2 border-sol p-5 flex flex-col justify-between transform -translate-x-full transition-transform duration-300 id-mobile-drawer">
-            <div>
-                <div class="flex items-center justify-between pb-4 border-b border-sol/20">
-                    <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 bg-amarelo border-2 border-sol organic-a flex items-center justify-center font-display font-black text-cobalto">A</div>
-                        <span class="font-display font-extrabold text-lg text-cobalto">ABAPORU</span>
-                    </div>
-                    <button id="close-mobile-menu" class="w-9 h-9 rounded-full border border-sol flex items-center justify-center" aria-label="Fechar menu">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-
-                <nav class="mt-8 flex flex-col gap-2 font-syne text-sm font-bold uppercase tracking-wide">
-                    <a href="#colecoes" class="mobile-nav-link py-3 px-3 rounded-xl hover:bg-amarelo/30">Coleção</a>
-                    <a href="#lookbook" class="mobile-nav-link py-3 px-3 rounded-xl hover:bg-caatinga/20">Editorial</a>
-                    <a href="#manifesto" class="mobile-nav-link py-3 px-3 rounded-xl hover:bg-terracota/20">A marca</a>
-                </nav>
-            </div>
-
-            <div class="pt-5 border-t border-sol/20">
-                <p class="font-sans text-xs leading-relaxed text-sol/70">
-                    Moda autoral com referências do Nordeste e da arte brasileira.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hero: less copy, stronger visual -->
-    <section class="border-b-2 border-sol overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-16">
-            <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-7 lg:gap-12 items-center">
-                <div class="order-2 lg:order-1">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-amarelo border-2 border-sol rounded-full font-syne text-[10px] font-extrabold uppercase tracking-wide mb-5">
-                        Coleção 01 · Nordeste
-                    </div>
-
-                    <h1 class="font-display font-extrabold text-[clamp(3.1rem,9vw,6.4rem)] desktop-tight leading-[.86] text-cobalto">
-                        FEITA<br>
-                        <span class="text-caju">DA TERRA.</span>
-                    </h1>
-
-                    <p class="mt-5 max-w-md text-sm sm:text-base leading-relaxed text-sol/75">
-                        Roupas autorais que misturam cor, matéria e referências do Nordeste.
-                    </p>
-
-                    <div class="mt-6">
-                        <a href="#degluticao" class="inline-flex items-center gap-2 bg-cobalto text-papel px-5 py-3.5 rounded-full border-2 border-sol font-syne text-[10px] font-extrabold uppercase tracking-wide organic-btn">
-                            Ver coleção <i class="fa-solid fa-arrow-right text-[9px]"></i>
-                        </a>
-                    </div>
-
-                    <div class="mt-7 flex items-center gap-3 text-[10px] font-syne uppercase font-bold tracking-wide text-sol/55">
-                        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-amarelo"></span>Cor</span>
-                        <span class="w-1 h-1 rounded-full bg-sol/30"></span>
-                        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-caatinga"></span>Matéria</span>
-                        <span class="w-1 h-1 rounded-full bg-sol/30"></span>
-                        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-caju"></span>Origem</span>
-                    </div>
-                </div>
-
-                <div class="order-1 lg:order-2 relative min-h-[340px] sm:min-h-[470px] flex items-center justify-center">
-                    <div class="absolute top-2 right-2 sm:top-4 sm:right-8 w-20 h-20 sm:w-28 sm:h-28 bg-amarelo border-2 border-sol rounded-full"></div>
-                    <div class="absolute bottom-4 left-2 sm:left-7 w-16 h-16 sm:w-24 sm:h-24 bg-caatinga border-2 border-sol organic-a"></div>
-
-                    <div class="relative z-10 w-[82%] sm:w-[68%] lg:w-[78%]">
-                        <div class="bg-terracota p-2.5 sm:p-3 border-2 border-sol organic-a">
-                            <div class="overflow-hidden organic-b bg-papel aspect-[4/5]">
-                                <img
-                                    src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Peça da coleção Abaporu"
-                                    class="w-full h-full object-cover saturate-125"
-                                >
-                            </div>
-                        </div>
-
-                        <div class="absolute -left-4 sm:-left-8 top-1/2 -translate-y-1/2 bg-papel border-2 border-sol px-3 py-2 sm:px-4 sm:py-3 organic-c shadow-[3px_3px_0_#2B211C]">
-                            <span class="font-display text-lg sm:text-2xl font-extrabold text-cobalto">01</span>
-                            <span class="block font-syne text-[8px] sm:text-[9px] uppercase font-bold text-sol/60">lote</span>
-                        </div>
-
-                        <div class="absolute -right-2 sm:-right-7 bottom-4 sm:bottom-8 bg-caju text-papel border-2 border-sol px-3 py-2 organic-b rotate-[-4deg]">
-                            <span class="font-syne text-[9px] uppercase font-extrabold">Nordeste</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Collection filter + products -->
-    <section id="colecoes" class="border-b-2 border-sol bg-amarelo/10">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                    <span class="font-syne text-[10px] font-extrabold uppercase tracking-[0.16em] text-caju">01 · Coleção</span>
-                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-cobalto mt-1">Peças em destaque</h2>
-                </div>
-
-                <div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar font-syne text-[10px] font-bold uppercase whitespace-nowrap">
-                    <button onclick="filterProducts('all', this)" class="filter-btn shrink-0 px-3.5 py-2 rounded-full border-2 border-sol bg-cobalto text-papel">Tudo</button>
-                    <button onclick="filterProducts('linho', this)" class="filter-btn shrink-0 px-3.5 py-2 rounded-full border-2 border-sol bg-papel text-cobalto hover:bg-amarelo transition-colors">Linho</button>
-                    <button onclick="filterProducts('algodao', this)" class="filter-btn shrink-0 px-3.5 py-2 rounded-full border-2 border-sol bg-papel text-cobalto hover:bg-caatinga/20 transition-colors">Algodão</button>
-                    <button onclick="filterProducts('caju', this)" class="filter-btn shrink-0 px-3.5 py-2 rounded-full border-2 border-sol bg-papel text-cobalto hover:bg-terracota/20 transition-colors">Caju</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="degluticao" class="border-b-2 border-sol">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-7 sm:gap-x-5 sm:gap-y-10" id="product-grid"></div>
-        </div>
-    </section>
-
-    <!-- Editorial -->
-    <section id="lookbook" class="border-b-2 border-sol bg-cobalto text-papel">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
-            <div class="grid lg:grid-cols-[1.2fr_.8fr] gap-7 lg:gap-12 items-center">
-                <div class="order-2 lg:order-1">
-                    <span class="font-syne text-[10px] font-extrabold uppercase tracking-[0.16em] text-amarelo">02 · Editorial</span>
-                    <h2 class="font-display font-extrabold text-4xl sm:text-5xl mt-2 leading-[.92]">A feira,<br>o sol,<br>a roupa.</h2>
-                    <p class="mt-5 max-w-md text-sm leading-relaxed text-papel/70">
-                        Uma coleção pensada entre matéria, cor e paisagem — sem separar moda daquilo que dá origem a ela.
-                    </p>
-                    <a href="#degluticao" class="inline-flex items-center gap-2 mt-6 px-5 py-3 rounded-full border-2 border-papel bg-amarelo text-cobalto font-syne text-[10px] font-extrabold uppercase organic-btn">
-                        Ver peças <i class="fa-solid fa-arrow-right text-[9px]"></i>
-                    </a>
-                </div>
-
-                <div class="order-1 lg:order-2">
-                    <div class="relative bg-amarelo p-2.5 border-2 border-sol organic-b shadow-[5px_5px_0_#2B211C]">
-                        <div class="overflow-hidden organic-a aspect-[4/5]">
-                            <img
-                                src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop"
-                                alt="Editorial de moda da coleção"
-                                class="w-full h-full object-cover saturate-125"
-                            >
-                        </div>
-                        <div class="absolute -right-3 bottom-5 bg-caju text-papel border-2 border-sol px-3 py-2 rounded-full font-syne text-[9px] font-extrabold uppercase rotate-3">
-                            Canto da Caatinga
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Brand statement -->
-    <section id="manifesto" class="border-b-2 border-sol">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
-            <div class="grid lg:grid-cols-[1fr_.85fr] gap-8 lg:gap-14 items-center">
-                <div>
-                    <span class="font-syne text-[10px] font-extrabold uppercase tracking-[0.16em] text-terracota">03 · A marca</span>
-                    <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-cobalto mt-2 leading-[.95]">
-                        O Nordeste não é cenário.
-                        <span class="text-caju">É ponto de partida.</span>
-                    </h2>
-                    <p class="mt-5 max-w-xl text-sm sm:text-base leading-relaxed text-sol/75">
-                        A ABAPORU transforma referências brasileiras em roupa contemporânea — com cor, matéria e formas que carregam lugar.
-                    </p>
-                </div>
-
-                <div class="relative">
-                    <div class="bg-amarelo p-2.5 border-2 border-sol organic-c shadow-[5px_5px_0_#2B211C]">
-                        <div class="overflow-hidden organic-a aspect-[4/3]">
-                            <img
-                                src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1000&auto=format&fit=crop"
-                                alt="Detalhe de material têxtil"
-                                class="w-full h-full object-cover"
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="bg-caju text-papel">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div>
-                    <span class="font-syne text-[10px] font-extrabold uppercase tracking-[0.16em] text-amarelo">04 · Fique por perto</span>
-                    <h2 class="font-display font-extrabold text-2xl sm:text-3xl mt-1">Novos lotes, histórias e peças.</h2>
-                </div>
-
-                <form onsubmit="handleNewsletter(event)" class="w-full md:max-w-lg flex gap-2">
-                    <input
-                        type="email"
-                        required
-                        placeholder="seu e-mail"
-                        class="min-w-0 flex-1 px-4 py-3 rounded-full bg-papel text-sol placeholder-sol/45 border-2 border-sol font-sans text-sm focus:outline-none"
-                    >
-                    <button type="submit" class="shrink-0 px-4 sm:px-5 py-3 rounded-full bg-amarelo text-cobalto border-2 border-sol font-syne text-[10px] font-extrabold uppercase organic-btn">
-                        Entrar
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-sol text-papel">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-            <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
-                <div>
-                    <div class="font-display font-extrabold text-2xl">ABAPORU</div>
-                    <p class="text-xs text-papel/55 mt-2 max-w-sm">Moda autoral brasileira inspirada no Nordeste e na arte.</p>
-                </div>
-
-                <div class="flex flex-wrap items-center gap-4 font-syne text-[10px] font-bold uppercase text-papel/65">
-                    <a href="#colecoes" class="hover:text-amarelo">Coleção</a>
-                    <a href="#lookbook" class="hover:text-amarelo">Editorial</a>
-                    <a href="#manifesto" class="hover:text-amarelo">A marca</a>
-                    <a href="#" class="hover:text-amarelo">Trocas</a>
-                </div>
-            </div>
-
-            <div class="mt-7 pt-4 border-t border-papel/10 flex flex-col sm:flex-row justify-between gap-3 text-[10px] text-papel/40">
-                <span>© 2026 ABAPORU</span>
-                <span>Recife · Nordeste · Brasil</span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Cart -->
-    <div id="cart-drawer" class="fixed inset-0 z-50 bg-sol/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="fixed inset-y-0 right-0 w-full sm:max-w-md bg-papel border-l-2 border-sol p-5 sm:p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 id-cart-content drawer-scroll">
-            <div class="min-h-0">
-                <div class="flex items-center justify-between pb-4 border-b border-sol/20">
-                    <div class="flex items-center gap-2 font-display">
-                        <i class="fa-solid fa-bag-shopping text-caju"></i>
-                        <h3 class="text-xl font-extrabold uppercase text-cobalto">Sacola</h3>
-                    </div>
-                    <button id="close-cart-btn" class="w-9 h-9 rounded-full border border-sol flex items-center justify-center" aria-label="Fechar sacola">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-
-                <div class="py-4 border-b border-sol/15 space-y-2">
-                    <div class="flex justify-between font-syne text-[10px] font-bold">
-                        <span id="free-shipping-text" class="text-sol/60">Faltam R$ 499,00 para frete grátis</span>
-                        <span id="free-shipping-percent" class="text-caju">0%</span>
-                    </div>
-                    <div class="w-full h-2 bg-papel border border-sol rounded-full overflow-hidden">
-                        <div id="free-shipping-bar" class="h-full bg-caatinga transition-all duration-500 w-0"></div>
-                    </div>
-                </div>
-
-                <div id="cart-items-container" class="mt-4 max-h-[58vh] overflow-y-auto space-y-3 pr-1 drawer-scroll"></div>
-            </div>
-
-            <div class="pt-5 border-t border-sol/15 space-y-4">
-                <div class="flex justify-between items-center font-syne text-sm font-bold">
-                    <span>Total</span>
-                    <span id="cart-total" class="font-display font-extrabold text-xl text-caju">R$ 0,00</span>
-                </div>
-                <div class="sr-only" id="cart-subtotal">R$ 0,00</div>
-                <button onclick="simulateCheckout()" class="w-full py-3.5 rounded-full bg-caju text-papel border-2 border-sol font-syne font-extrabold uppercase text-[10px] tracking-wide organic-btn">
-                    Finalizar pedido
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Quick view -->
-    <div id="quick-view-modal" class="fixed inset-0 z-50 bg-sol/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-3 sm:p-5">
-        <div class="bg-papel border-2 border-sol shadow-[6px_6px_0_#2B211C] max-w-3xl w-full max-h-[92vh] overflow-y-auto relative id-modal-content">
-            <button onclick="closeQuickView()" class="absolute top-3 right-3 z-20 w-9 h-9 rounded-full bg-caju text-papel border-2 border-sol flex items-center justify-center" aria-label="Fechar">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div id="quick-view-body" class="grid grid-cols-1 md:grid-cols-2"></div>
-        </div>
-    </div>
-
-    <!-- Search -->
-    <div id="search-modal" class="fixed inset-0 z-50 bg-sol/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-start justify-center pt-20 px-4">
-        <div class="bg-papel border-2 border-sol shadow-[6px_6px_0_#2B211C] max-w-lg w-full p-5 relative id-search-content">
-            <div class="flex items-center justify-between border-b border-sol/15 pb-3">
-                <span class="font-syne text-[10px] font-extrabold uppercase text-caju">Buscar</span>
-                <button onclick="closeSearch()" class="w-9 h-9 rounded-full border border-sol flex items-center justify-center" aria-label="Fechar busca">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <input id="search-input"
-                   type="text"
-                   onkeyup="handleSearchInput()"
-                   placeholder="Digite o nome da peça..."
-                   class="w-full mt-4 px-4 py-3 rounded-full bg-papel border-2 border-sol font-syne text-xs text-sol focus:outline-none">
-
-            <div id="search-results" class="max-h-60 overflow-y-auto space-y-2 pt-3">
-                <p class="font-syne text-xs text-sol/45 text-center py-4">Busque por uma peça da coleção.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="toast-container" class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-5 sm:max-w-sm z-50 space-y-2 pointer-events-none"></div>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        papel: '#FBF7F0',
-                        amarelo: {
-                            DEFAULT: '#FFB703',
-                            light: '#FFC83B',
-                            dark: '#D99B00'
-                        },
-                        cobalto: {
-                            DEFAULT: '#0D3B66',
-                            dark: '#072442'
-                        },
-                        caatinga: {
-                            DEFAULT: '#2A9D8F',
-                            dark: '#1E7268'
-                        },
-                        terracota: {
-                            DEFAULT: '#E07A5F',
-                            dark: '#B8553B'
-                        },
-                        caju: {
-                            DEFAULT: '#D62828',
-                            dark: '#A31919'
-                        },
-                        sol: '#1A0E0A'
+                        areia: '#F4EFEA',       /* Fundo Algodão Cru */
+                        caqui: '#D8C4B0',       /* Caqui Sertão */
+                        terracota: '#B85C38',   /* Barro / Terracota */
+                        verdeCacto: '#3A5F43',  /* Espada de São Jorge / Cacto */
+                        sertao: '#1A1817',      /* Preto Xilogravura */
+                        couro: '#8C5A3C',       /* Couro / Madeira */
                     },
                     fontFamily: {
                         display: ['"Bricolage Grotesque"', 'sans-serif'],
@@ -522,39 +38,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Organic Blob Form Utility Classes inspired by Tarsila do Amaral Shapes */
-        .blob-shape-1 {
-            border-radius: 58% 42% 65% 35% / 40% 60% 40% 60%;
-        }
-        .blob-shape-2 {
-            border-radius: 35% 65% 40% 60% / 60% 35% 65% 40%;
-        }
-        .blob-shape-3 {
-            border-radius: 70% 30% 50% 50% / 30% 70% 30% 70%;
-        }
-        .blob-shape-4 {
-            border-radius: 40% 60% 70% 30% / 50% 30% 70% 50%;
+        :root { color-scheme: light; }
+        html { overflow-x: hidden; }
+
+        body {
+            background-color: #F4EFEA;
+            color: #1A1817;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* Tactile Shadow & Border System */
-        .abaporu-card {
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            box-shadow: 3px 3px 0px #0D3B66;
-        }
-        .abaporu-card:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 5px 5px 0px #D62828;
+        /* Tactile Frame Styles */
+        .veredas-frame {
+            border: 2px solid #1A1817;
+            box-shadow: 4px 4px 0 #1A1817;
         }
 
-        .blob-button {
-            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-            transition: all 0.25s ease;
-        }
-        .blob-button:hover {
-            transform: scale(1.03) rotate(-1deg);
+        .veredas-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 2px solid #1A1817;
+            box-shadow: 3px 3px 0 #1A1817;
         }
 
-        /* Ticker Marquee Animation */
+        .veredas-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 6px 6px 0 #1A1817;
+        }
+
+        .btn-veredas {
+            transition: all 0.2s ease;
+            border: 2px solid #1A1817;
+        }
+
+        .btn-veredas:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 0 #1A1817;
+        }
+
+        /* Ticker Animation */
         @keyframes marquee {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -562,223 +82,402 @@
         .animate-marquee {
             display: flex;
             width: 200%;
-            animation: marquee 22s linear infinite;
+            animation: marquee 25s linear infinite;
         }
 
-        /* Hotspot Pulse */
-        @keyframes hotspot-pulse {
-            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(214, 40, 40, 0.8); }
-            70% { transform: scale(1.15); box-shadow: 0 0 0 12px rgba(214, 40, 40, 0); }
-            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(214, 40, 40, 0); }
-        }
-        .hotspot-anim {
-            animation: hotspot-pulse 2s infinite;
-        }
-
-
-        @media (max-width: 390px) {
-            #product-grid { gap-inline: 8px; }
-            .abaporu-card { padding: 8px; }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #FBF7F0;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #2A9D8F;
-            border: 2px solid #FBF7F0;
-            border-radius: 20px;
-        }
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F4EFEA; }
+        ::-webkit-scrollbar-thumb { background: #8C5A3C; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-papel text-sol font-sans antialiased selection:bg-caju selection:text-papel overflow-x-hidden">
 
-    <div class="bg-caju text-papel font-syne text-xs font-extrabold uppercase tracking-widest py-2.5 overflow-hidden border-b-2 border-sol select-none">
+<body class="bg-areia text-sertao antialiased selection:bg-terracota selection:text-areia overflow-x-hidden">
+
+    <!-- TOP ANNOUNCEMENT TICKER -->
+    <div class="bg-sertao text-areia font-syne text-[10px] sm:text-xs font-extrabold uppercase tracking-widest py-2.5 overflow-hidden border-b-2 border-sertao select-none">
         <div class="animate-marquee whitespace-nowrap flex items-center gap-10">
-            <span>✦ A B A P O R U — MODA ANTROPOFÁGICA BRASILEIRA</span>
-            <span>✦ FRETE GRÁTIS PARA TODO O BRASIL NAS COMPRAS ACIMA DE R$ 499</span>
-            <span>✦ COLEÇÃO MANIFESTO '26 — DEGLUTIÇÃO & VESTUÁRIO</span>
-            <span>✦ TECIDOS NATURAIS: LINHO, ALGODÃO MOCÓ & CORANTES VEGETAIS</span>
-            <span>✦ A B A P O R U — MODA ANTROPOFÁGICA BRASILEIRA</span>
-            <span>✦ FRETE GRÁTIS PARA TODO O BRASIL NAS COMPRAS ACIMA DE R$ 499</span>
+            <span>✦ VEREDAS — CAMINHOS QUE VESTEM</span>
+            <span>✦ 100% ALGODÃO PREMIUM 230 G/M²</span>
+            <span>✦ COLEÇÃO RAÍZES — FÉ, CULTURA & DESIGN ATEMPORAL</span>
+            <span>✦ FRETE GRÁTIS EM COMPRAS ACIMA DE R$ 399</span>
+            <span>✦ VEREDAS — CAMINHOS QUE VESTEM</span>
+            <span>✦ 100% ALGODÃO PREMIUM 230 G/M²</span>
         </div>
     </div>
 
-    <script>
-        /* ==========================================================================
-           PRODUCT DATABASE (ABAPORU MODA)
-           ========================================================================== */
-        const products = [
-            {
-                id: 1,
-                name: "Vestido Evasê Linho Mandacaru",
-                category: "linho",
-                price: 789.00,
-                tag: "100% Linho Puro",
-                blobStyle: "blob-shape-1",
-                bgColor: "bg-caatinga/30",
-                spanCols: "lg:col-span-8", // Asymmetrical hero layout item
-                imageMain: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop",
-                description: "Modelagem evasê fluida em linho pesado lavado. Possui mangas levemente bufantes inspiradas nas folhagens tropicais.",
-                sizes: ["PP", "P", "M", "G"]
-            },
-            {
-                id: 2,
-                name: "Camisa Alfaiataria Argila Caju",
-                category: "caju",
-                price: 540.00,
-                tag: "Tingimento Vegetal",
-                blobStyle: "blob-shape-2",
-                bgColor: "bg-terracota/30",
-                spanCols: "lg:col-span-4",
-                imageMain: "https://images.unsplash.com/photo-1598554747436-c9293d6a588f?q=80&w=800&auto=format&fit=crop",
-                description: "Camisa de corte solto em algodão com tingimento artesanal extraído da casca de caju e botões de madeira.",
-                sizes: ["P", "M", "G", "GG"]
-            },
-            {
-                id: 3,
-                name: "Blazer Terracota Solstício",
-                category: "linho",
-                price: 1120.00,
-                tag: "Destaque Atelier",
-                blobStyle: "blob-shape-3",
-                bgColor: "bg-amarelo/30",
-                spanCols: "lg:col-span-4",
-                imageMain: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
-                description: "Estruturado em linho rústico cru com gola arredondada de inspiração antropofágica.",
-                sizes: ["PP", "P", "M", "G"]
-            },
-            {
-                id: 4,
-                name: "Bolsa Tear & Couro Carnaúba",
-                category: "algodao",
-                price: 690.00,
-                tag: "Feito à Mão PE",
-                blobStyle: "blob-shape-4",
-                bgColor: "bg-caatinga/30",
-                spanCols: "lg:col-span-4",
-                imageMain: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800&auto=format&fit=crop",
-                description: "Tecida em tear manual no Agreste Pernambucano com detalhes de acabamento em fibra natural.",
-                sizes: ["Único"]
-            },
-            {
-                id: 5,
-                name: "Calça Pantalona Areia",
-                category: "algodao",
-                price: 620.00,
-                tag: "Algodão Agroecológico",
-                blobStyle: "blob-shape-1",
-                bgColor: "bg-terracota/30",
-                spanCols: "lg:col-span-4",
-                imageMain: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop",
-                description: "Cintura alta com caimento amplo e toque suave de algodão mocó cultivado no semiárido.",
-                sizes: ["PP", "P", "M", "G", "GG"]
-            },
-            {
-                id: 6,
-                name: "Túnica Fluida Sol Nascente",
-                category: "linho",
-                price: 850.00,
-                tag: "Série Solstício",
-                blobStyle: "blob-shape-2",
-                bgColor: "bg-amarelo/40",
-                spanCols: "lg:col-span-6",
-                imageMain: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800&auto=format&fit=crop",
-                description: "Túnica longa assimétrica inspirada nas curvas do relevo nordestino e na luz tropical.",
-                sizes: ["P", "M", "G"]
-            },
-            {
-                id: 7,
-                name: "Saia Evasê Barro Ocre",
-                category: "caju",
-                price: 490.00,
-                tag: "Edição Limitada",
-                blobStyle: "blob-shape-3",
-                bgColor: "bg-caatinga/30",
-                spanCols: "lg:col-span-6",
-                imageMain: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?q=80&w=800&auto=format&fit=crop",
-                description: "Saia midi com fenda sutil, tingida com pigmento de argila de Caruaru.",
-                sizes: ["PP", "P", "M", "G"]
-            }
-        ];
+    <!-- HEADER -->
+    <header class="sticky top-0 z-40 bg-areia/95 backdrop-blur-md border-b-2 border-sertao">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 py-3 flex items-center justify-between gap-4">
+            
+            <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-sertao" aria-label="Abrir menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
 
-        /* Application State */
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-couro text-areia border-2 border-sertao rounded-xl flex items-center justify-center font-display font-extrabold text-xl shadow-[2px_2px_0_#1A1817]">
+                    Ψ
+                </div>
+                <div class="leading-none">
+                    <span class="font-display font-extrabold text-2xl sm:text-3xl text-sertao tracking-tight block">VEREDAS</span>
+                    <span class="font-syne text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-couro font-bold block">Caminhos que Vestem</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-2 font-syne text-xs font-extrabold uppercase tracking-wider">
+                <a href="#colecao" class="px-3.5 py-2 rounded-full hover:bg-caqui/40 transition-colors">Coleção Raízes</a>
+                <a href="#manifesto" class="px-3.5 py-2 rounded-full hover:bg-caqui/40 transition-colors">A Marca</a>
+                <a href="#detalhes" class="px-3.5 py-2 rounded-full hover:bg-caqui/40 transition-colors">Qualidade & Matéria</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-2">
+                <button id="open-search-btn" class="w-10 h-10 rounded-full border-2 border-sertao bg-areia hover:bg-caqui transition-colors flex items-center justify-center" aria-label="Buscar">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                </button>
+
+                <button id="open-cart-btn" class="h-10 px-3.5 sm:px-4 rounded-full border-2 border-sertao bg-terracota text-areia flex items-center gap-2 hover:bg-sertao transition-colors font-syne text-xs font-bold uppercase shadow-[2px_2px_0_#1A1817]">
+                    <i class="fa-solid fa-bag-shopping text-sm"></i>
+                    <span class="hidden sm:inline">Sacola</span>
+                    <span id="cart-count" class="w-5 h-5 rounded-full bg-areia text-sertao text-[10px] font-display font-extrabold flex items-center justify-center border border-sertao">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE NAVIGATION DRAWER -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-sertao/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="fixed inset-y-0 left-0 w-4/5 max-w-sm bg-areia border-r-2 border-sertao p-6 flex flex-col justify-between transform -translate-x-full transition-transform duration-300 id-mobile-drawer">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b-2 border-sertao">
+                    <div class="flex items-center gap-2">
+                        <span class="w-8 h-8 bg-couro text-areia font-display font-black flex items-center justify-center border border-sertao rounded">Ψ</span>
+                        <span class="font-display font-extrabold text-xl text-sertao">VEREDAS</span>
+                    </div>
+                    <button id="close-mobile-menu" class="w-8 h-8 rounded-full border border-sertao flex items-center justify-center">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <nav class="mt-6 flex flex-col gap-3 font-syne text-sm font-extrabold uppercase tracking-wider">
+                    <a href="#colecao" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-caqui/50">Coleção Raízes</a>
+                    <a href="#manifesto" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-caqui/50">A Marca</a>
+                    <a href="#detalhes" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-caqui/50">Qualidade & Matéria</a>
+                </nav>
+            </div>
+            <div class="pt-4 border-t border-sertao/20 text-xs text-sertao/70">
+                <p class="font-bold">VEREDAS® — Feito no Brasil</p>
+                <p class="mt-1">Design atemporal inspirado no Nordeste.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="border-b-2 border-sertao bg-caqui/20 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+                
+                <div class="lg:col-span-7 space-y-5">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-terracota text-areia border-2 border-sertao rounded-full font-syne text-[10px] font-extrabold uppercase tracking-wider shadow-[2px_2px_0_#1A1817]">
+                        Coleção Raízes 2026
+                    </div>
+
+                    <h1 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl leading-[0.95] text-sertao tracking-tight">
+                        FÉ, ORIGEM E <br>
+                        <span class="text-terracota underline decoration-sertao decoration-2">DESIGN</span> ATEMPORAL.
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-sertao/80 max-w-lg leading-relaxed font-normal">
+                        Roupas autorais criadas para quem carrega o sertão por onde passa. Modelagens oversized em algodão de alta gramatura com grafismos inspirados na cultura nordestina.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap gap-4 items-center">
+                        <a href="#colecao" class="px-7 py-3.5 bg-sertao text-areia font-syne text-xs font-extrabold uppercase tracking-wider rounded-full btn-veredas shadow-[3px_3px_0_#8C5A3C]">
+                            Explorar T-Shirts Oversized <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+                        </a>
+                    </div>
+
+                    <div class="pt-4 flex items-center gap-6 text-xs font-syne font-bold uppercase text-sertao/70 border-t border-sertao/15">
+                        <span>✦ 100% Algodão Premium</span>
+                        <span>✦ Gramatura 230 g/m²</span>
+                        <span>✦ Feito no Brasil</span>
+                    </div>
+                </div>
+
+                <!-- Hero Image Visual -->
+                <div class="lg:col-span-5 relative">
+                    <div class="bg-couro p-3 rounded-2xl veredas-frame transform rotate-1 hover:rotate-0 transition-transform">
+                        <div class="overflow-hidden rounded-xl aspect-[4/5] bg-areia relative">
+                            <img src="imagens/img3.jpeg" 
+                                 alt="Veredas Oversized Tee" 
+                                 class="w-full h-full object-cover">
+                            
+                            <div class="absolute bottom-3 left-3 right-3 bg-areia/95 border-2 border-sertao p-3 rounded-xl shadow-md">
+                                <span class="font-syne text-[9px] font-extrabold uppercase text-terracota block">Destaque da Coleção</span>
+                                <p class="font-display font-extrabold text-sm text-sertao">Oversized Tee Raízes - Caqui</p>
+                                <p class="font-mono text-xs font-bold text-sertao/80 mt-0.5">R$ 189,00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOG / COLLECTION GRID -->
+    <section id="colecao" class="py-12 sm:py-16 border-b-2 border-sertao">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+                <div>
+                    <span class="font-syne text-xs font-extrabold uppercase tracking-widest text-terracota block mb-1">Catálogo de Peças</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-sertao">Coleção Raízes</h2>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex gap-2 overflow-x-auto pb-1 font-syne text-xs font-extrabold uppercase whitespace-nowrap">
+                    <button onclick="filterProducts('todos', this)" class="filter-btn px-4 py-2 rounded-full border-2 border-sertao bg-sertao text-areia">Todos</button>
+                    <button onclick="filterProducts('oversized', this)" class="filter-btn px-4 py-2 rounded-full border-2 border-sertao bg-areia text-sertao hover:bg-caqui">Oversized Tees</button>
+                    <button onclick="filterProducts('acessorios', this)" class="filter-btn px-4 py-2 rounded-full border-2 border-sertao bg-areia text-sertao hover:bg-caqui">Acessórios</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Injected dynamically by JS -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BRAND MANIFESTO SECTION -->
+    <section id="manifesto" class="py-14 sm:py-20 bg-sertao text-areia border-b-2 border-sertao relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+                
+                <div class="lg:col-span-6 space-y-5">
+                    <span class="font-syne text-xs font-extrabold uppercase tracking-widest text-caqui block">Nossa História & Propósito</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-5xl leading-tight text-areia">
+                        VESTIR VEREDAS É CARREGAR SUA ORIGEM COM ORGULHO.
+                    </h2>
+                    <p class="text-areia/80 text-sm sm:text-base leading-relaxed">
+                        VEREDAS é uma marca de roupas autoral que nasce do encontro entre a fé, a cultura nordestina e o design atemporal. Inspirada nas raízes do sertão, na força do povo e nos símbolos que nos guiam, criamos peças que carregam história e identidade.
+                    </p>
+                    <div class="p-4 bg-areia/10 border border-areia/20 rounded-xl space-y-2">
+                        <p class="font-syne text-xs font-bold text-caqui uppercase">Minimalismo Contemporâneo com Raízes Nordestinas</p>
+                        <p class="text-xs text-areia/70">Modelagens amplas de corte urbano combinadas com arte sacra popular e iconografia do sertão.</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="bg-caqui/20 border-2 border-areia p-4 rounded-2xl">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden bg-areia/10 flex items-center justify-center p-6 text-center">
+                            <div class="space-y-3">
+                                <span class="font-display font-black text-4xl text-caqui block">VEREDAS®</span>
+                                <p class="font-syne text-xs font-bold uppercase tracking-widest text-areia">Caminhos que vestem.</p>
+                                <p class="text-xs text-areia/60 max-w-xs mx-auto">Criado para quem carrega a força e a fé do sertão por onde passa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-areia border-t-2 border-sertao py-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 border-b border-sertao/20">
+                <div>
+                    <span class="font-display font-extrabold text-2xl text-sertao">VEREDAS®</span>
+                    <p class="text-xs text-sertao/70 mt-1">Caminhos que vestem. Feito no Brasil.</p>
+                </div>
+                <div class="flex gap-4 font-syne text-xs font-extrabold uppercase">
+                    <a href="#colecao" class="hover:text-terracota">Coleção</a>
+                    <a href="#manifesto" class="hover:text-terracota">A Marca</a>
+                    <a href="#" class="hover:text-terracota">Instagram</a>
+                </div>
+            </div>
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-[11px] text-sertao/60 gap-2">
+                <span>© 2026 VEREDAS. Todos os direitos reservados.</span>
+                <span>Nordeste — Brasil</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SHOPPING CART DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 bg-sertao/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="fixed inset-y-0 right-0 w-full sm:max-w-md bg-areia border-l-2 border-sertao p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 id-cart-content">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b-2 border-sertao">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-terracota"></i>
+                        <h3 class="font-display font-extrabold text-lg text-sertao uppercase">Sua Sacola</h3>
+                    </div>
+                    <button id="close-cart-btn" class="w-8 h-8 rounded-full border border-sertao flex items-center justify-center">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Free Shipping Progress -->
+                <div class="py-3 border-b border-sertao/15 space-y-1.5">
+                    <div class="flex justify-between font-syne text-[10px] font-bold">
+                        <span id="free-shipping-text" class="text-sertao/70">Faltam R$ 399,00 para frete grátis</span>
+                        <span id="free-shipping-percent" class="text-terracota">0%</span>
+                    </div>
+                    <div class="w-full h-2 bg-caqui/40 border border-sertao rounded-full overflow-hidden">
+                        <div id="free-shipping-bar" class="h-full bg-verdeCacto transition-all duration-300 w-0"></div>
+                    </div>
+                </div>
+
+                <div id="cart-items-container" class="mt-4 max-h-[55vh] overflow-y-auto space-y-3">
+                    <!-- Cart items injected by JS -->
+                </div>
+            </div>
+
+            <div class="pt-4 border-t-2 border-sertao space-y-3">
+                <div class="flex justify-between items-center font-syne font-extrabold text-sm">
+                    <span>Total</span>
+                    <span id="cart-total" class="font-display text-xl text-terracota">R$ 0,00</span>
+                </div>
+                <button onclick="checkout()" class="w-full py-3.5 bg-terracota text-areia font-syne font-extrabold uppercase text-xs rounded-xl btn-veredas">
+                    Finalizar Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK VIEW MODAL -->
+    <div id="quick-view-modal" class="fixed inset-0 z-50 bg-sertao/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+        <div class="bg-areia border-2 border-sertao shadow-[6px_6px_0_#1A1817] max-w-2xl w-full rounded-2xl relative overflow-hidden id-modal-content">
+            <button onclick="closeQuickView()" class="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-terracota text-areia border border-sertao flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="quick-view-body" class="grid grid-cols-1 md:grid-cols-2"></div>
+        </div>
+    </div>
+
+    <!-- SEARCH MODAL -->
+    <div id="search-modal" class="fixed inset-0 z-50 bg-sertao/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-start justify-center pt-20 px-4">
+        <div class="bg-areia border-2 border-sertao shadow-[6px_6px_0_#1A1817] max-w-lg w-full p-5 rounded-2xl relative">
+            <div class="flex items-center justify-between border-b border-sertao/20 pb-3">
+                <span class="font-syne text-xs font-extrabold uppercase text-terracota">Buscar Peças</span>
+                <button onclick="closeSearch()" class="w-8 h-8 rounded-full border border-sertao flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <input id="search-input" type="text" onkeyup="handleSearchInput()" placeholder="Buscar por camiseta, algodão, caqui..." class="w-full mt-4 px-4 py-3 rounded-xl bg-areia border-2 border-sertao font-syne text-xs text-sertao focus:outline-none">
+
+            <div id="search-results" class="max-h-60 overflow-y-auto space-y-2 pt-3">
+                <p class="font-syne text-xs text-sertao/50 text-center py-4">Digite para pesquisar no catálogo VEREDAS.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 space-y-2 pointer-events-none"></div>
+
+    <!-- JAVASCRIPT STATE & LOGIC -->
+    <script>
+        /* PRODUCTS DATABASE (VEREDAS REAL CATALOG) */
+        const products = [
+    {
+        id: 1,
+        name: "Oversized Tee Raízes - Caqui",
+        category: "oversized",
+        price: 189.00,
+        tag: "100% Algodão Premium",
+        gramature: "230 g/m²",
+        image: "imagens/img1.jpeg", // Corrigido: / em vez de \
+        description: "Camiseta Oversized em malha encorpada 230 g/m². Possui bordado minimalista de cacto no peito e estampa autoral nas costas com elementos da fé e cultura nordestina.",
+        sizes: ["P", "M", "G", "GG"]
+    },
+    {
+        id: 2,
+        name: "Oversized Tee Cacto Mínimo - Off-White",
+        category: "oversized",
+        price: 169.00,
+        tag: "Bordado Minimalista",
+        gramature: "230 g/m²",
+        image: "imagens/img2.jpeg", // Corrigido: / em vez de \
+        description: "Modelagem streetwear ampla e solta. Algodão macio com selo de sustentabilidade. Ícone cacto bordado no peito em tom contraste.",
+        sizes: ["P", "M", "G", "GG"]
+    },
+    {
+        id: 3,
+        name: "Oversized Tee Fé & Sertão - Preto",
+        category: "oversized",
+        price: 189.00,
+        tag: "Coleção Raízes",
+        gramature: "230 g/m²",
+        image: "imagens/img3.jpeg", // Corrigido: / em vez de \ e removido o "v" extra de .jpegv
+        description: "Cor preto profundo com estampa em serigrafia de alta definição nas costas. Etiqueta lateral exclusiva VEREDAS®.",
+        sizes: ["P", "M", "G", "GG"]
+    },
+    {
+        id: 4,
+        name: "Boné Aba Curva Sertão - Terracota",
+        category: "acessorios",
+        price: 119.00,
+        tag: "Acessórios",
+        gramature: "Sarja 100% Algodão",
+        image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=800&auto=format&fit=crop",
+        description: "Boné com fecho fivela regulável, bordado frontal com a marca VEREDAS e estrutura firme.",
+        sizes: ["Único"]
+    }
+];
+
         let cart = [];
-        let wishlist = new Set();
-        let selectedSizes = {}; // Tracks selected size per product card
+        let selectedSizes = {};
 
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts(products);
-            setupEventListeners();
+            setupListeners();
         });
 
-        /* Render Products — compact editorial cards */
         function renderProducts(items) {
-            const container = document.getElementById('product-grid');
-            if (!container) return;
+            const grid = document.getElementById('product-grid');
+            if (!grid) return;
 
-            if (items.length === 0) {
-                container.innerHTML = `<p class="col-span-full font-syne text-center py-10 text-sol/60 text-[10px] font-bold uppercase tracking-wider">Nenhuma peça encontrada.</p>`;
-                return;
-            }
-
-            container.innerHTML = items.map(product => {
-                const isWishlisted = wishlist.has(product.id);
-                const currentSize = selectedSizes[product.id] || product.sizes[0];
+            grid.innerHTML = items.map(p => {
+                const currentSize = selectedSizes[p.id] || p.sizes[0];
 
                 return `
-                <article class="abaporu-card bg-papel border-2 border-sol ${product.blobStyle} p-2.5 sm:p-3 relative group min-w-0">
-
-                    <div class="relative">
-                        <div class="relative h-[210px] sm:h-[250px] lg:h-[285px] ${product.bgColor} ${product.blobStyle} overflow-hidden">
-                            <img src="${product.imageMain}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-500">
-
-                            <button onclick="toggleWishlist(${product.id})"
-                                class="absolute top-2 right-2 w-7 h-7 rounded-full bg-papel/90 border border-sol flex items-center justify-center text-sol hover:bg-caju hover:text-papel transition-colors"
-                                aria-label="Favoritar ${product.name}">
-                                <i class="${isWishlisted ? 'fa-solid text-caju' : 'fa-regular'} fa-heart text-[10px]"></i>
-                            </button>
-
-                            <button onclick="quickView(${product.id})"
-                                class="absolute bottom-2 left-2 px-2.5 py-1.5 bg-cobalto/95 text-papel font-syne text-[8px] uppercase font-extrabold tracking-wider opacity-0 group-hover:opacity-100 transition-opacity border border-papel/30 rounded-full">
-                                Ver peça
+                <article class="veredas-card bg-areia p-4 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-caqui/30 mb-4 border border-sertao/20">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-sertao text-areia px-2.5 py-1 rounded-full font-syne text-[9px] font-extrabold uppercase">
+                                ${p.tag}
+                            </span>
+                            <button onclick="openQuickView(${p.id})" class="absolute bottom-2 right-2 bg-areia/90 text-sertao px-3 py-1.5 rounded-full font-syne text-[9px] font-bold uppercase border border-sertao hover:bg-terracota hover:text-areia transition-colors">
+                                Ver Detalhes
                             </button>
                         </div>
+
+                        <span class="font-syne text-[10px] font-extrabold uppercase text-couro block mb-1">${p.gramature}</span>
+                        <h3 class="font-display font-extrabold text-lg text-sertao leading-tight uppercase mb-2">${p.name}</h3>
+                        <p class="font-mono text-sm font-extrabold text-terracota mb-3">R$ ${p.price.toFixed(2).replace('.', ',')}</p>
                     </div>
 
-                    <div class="pt-3 px-0.5">
-                        <div class="mb-2">
-                            <span class="font-syne text-[8px] font-extrabold text-caatinga uppercase tracking-[0.12em] block mb-1">${product.tag}</span>
-                            <h3 class="font-display font-extrabold text-[12px] sm:text-[14px] leading-[1.08] text-cobalto uppercase group-hover:text-caju transition-colors break-words">
-                                ${product.name}
-                            </h3>
-                        </div>
-
-                        <div class="flex items-center justify-between gap-2 border-t border-sol/15 pt-2">
-                            <div class="flex items-center gap-1 font-syne text-[8px] font-bold min-w-0">
-                                <span class="text-sol/45 uppercase shrink-0">Tam.</span>
-                                <div class="flex gap-0.5 flex-wrap">
-                                    ${product.sizes.map(s => `
-                                        <button onclick="selectCardSize(${product.id}, '${s}', this)"
-                                            class="card-size-btn w-[19px] h-[19px] border border-sol rounded-full flex items-center justify-center text-[7px] leading-none ${s === currentSize ? 'bg-cobalto text-papel font-extrabold' : 'bg-papel text-sol hover:bg-amarelo'}">
-                                            ${s}
-                                        </button>
-                                    `).join('')}
-                                </div>
+                    <div class="pt-3 border-t border-sertao/15 space-y-3">
+                        <div class="flex items-center justify-between text-xs font-syne">
+                            <span class="font-bold text-sertao/60">Tamanho:</span>
+                            <div class="flex gap-1">
+                                ${p.sizes.map(s => `
+                                    <button onclick="selectSize(${p.id}, '${s}', this)" class="w-6 h-6 rounded-md border border-sertao text-[10px] font-extrabold ${s === currentSize ? 'bg-sertao text-areia' : 'bg-areia text-sertao hover:bg-caqui'}">
+                                        ${s}
+                                    </button>
+                                `).join('')}
                             </div>
-
-                            <span class="font-mono text-[11px] sm:text-xs font-extrabold text-caju whitespace-nowrap">
-                                R$ ${product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                            </span>
                         </div>
 
-                        <button onclick="addToCart(${product.id})"
-                            class="mt-2.5 w-full py-2 bg-amarelo hover:bg-caju hover:text-papel text-cobalto font-syne text-[8px] sm:text-[9px] font-extrabold uppercase tracking-wider border border-sol rounded-full transition-colors">
-                            Adicionar à sacola
+                        <button onclick="addToCart(${p.id})" class="w-full py-2.5 bg-sertao text-areia font-syne text-xs font-extrabold uppercase rounded-xl btn-veredas shadow-[2px_2px_0_#8C5A3C]">
+                            Adicionar à Sacola
                         </button>
                     </div>
                 </article>
@@ -786,248 +485,95 @@
             }).join('');
         }
 
-        /* Size Selection Handler on Product Card */
-        function selectCardSize(productId, size, btn) {
+        function selectSize(productId, size, btn) {
             selectedSizes[productId] = size;
             const parent = btn.parentElement;
-            parent.querySelectorAll('.card-size-btn').forEach(b => {
-                b.classList.remove('bg-cobalto', 'text-papel', 'font-extrabold');
-                b.classList.add('bg-papel', 'text-sol');
+            parent.querySelectorAll('button').forEach(b => {
+                b.className = "w-6 h-6 rounded-md border border-sertao text-[10px] font-extrabold bg-areia text-sertao hover:bg-caqui";
             });
-            btn.classList.remove('bg-papel', 'text-sol');
-            btn.classList.add('bg-cobalto', 'text-papel', 'font-extrabold');
+            btn.className = "w-6 h-6 rounded-md border border-sertao text-[10px] font-extrabold bg-sertao text-areia";
         }
 
-        /* Category Filter Handler */
-        function filterProducts(category, btn) {
-            if (btn) {
-                document.querySelectorAll('.filter-btn').forEach(b => {
-                    b.classList.remove('bg-cobalto', 'text-papel');
-                    b.classList.add('bg-papel', 'text-cobalto');
-                });
-                btn.classList.remove('bg-papel', 'text-cobalto');
-                btn.classList.add('bg-cobalto', 'text-papel');
-            }
+        function filterProducts(cat, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.className = "filter-btn px-4 py-2 rounded-full border-2 border-sertao bg-areia text-sertao hover:bg-caqui";
+            });
+            btn.className = "filter-btn px-4 py-2 rounded-full border-2 border-sertao bg-sertao text-areia";
 
-            if (category === 'all') {
-                renderProducts(products);
-            } else {
-                const filtered = products.filter(p => p.category === category);
-                renderProducts(filtered);
-            }
+            if (cat === 'todos') renderProducts(products);
+            else renderProducts(products.filter(p => p.category === cat));
         }
 
-        /* Shopping Cart Actions */
-        function addToCart(productId, customSize = null) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
+        /* CART LOGIC */
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const size = selectedSizes[id] || product.sizes[0];
+            const existing = cart.find(i => i.id === id && i.size === size);
 
-            const size = customSize || selectedSizes[productId] || product.sizes[0];
-            const existing = cart.find(item => item.id === productId && item.size === size);
-
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push({ ...product, size, quantity: 1 });
-            }
+            if (existing) existing.quantity += 1;
+            else cart.push({ ...product, size, quantity: 1 });
 
             updateCartUI();
             openCart();
-            showToast(`"${product.name}" adicionado à sacola (Tam: ${size}).`);
+            showToast(`"${product.name}" adicionado à sacola.`);
         }
 
         function updateCartQuantity(index, delta) {
             if (cart[index]) {
                 cart[index].quantity += delta;
-                if (cart[index].quantity <= 0) {
-                    cart.splice(index, 1);
-                }
+                if (cart[index].quantity <= 0) cart.splice(index, 1);
                 updateCartUI();
             }
         }
 
         function updateCartUI() {
-            const container = document.getElementById('cart-items-container');
-            const cartCountBadge = document.getElementById('cart-count');
-            const subtotalEl = document.getElementById('cart-subtotal');
-            const totalEl = document.getElementById('cart-total');
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items-container');
+            const cartTotal = document.getElementById('cart-total');
             const freeShippingBar = document.getElementById('free-shipping-bar');
             const freeShippingText = document.getElementById('free-shipping-text');
             const freeShippingPercent = document.getElementById('free-shipping-percent');
 
-            const totalCount = cart.reduce((acc, item) => acc + item.quantity, 0);
-            cartCountBadge.textContent = totalCount;
+            const count = cart.reduce((acc, item) => acc + item.quantity, 0);
+            const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
-            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-            subtotalEl.textContent = `R$ ${subtotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-            totalEl.textContent = `R$ ${subtotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+            cartCount.textContent = count;
+            cartTotal.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
 
-            // Free shipping logic
-            const target = 499;
-            const progress = Math.min(100, (subtotal / target) * 100);
+            const target = 399;
+            const progress = Math.min(100, Math.round((total / target) * 100));
             freeShippingBar.style.width = `${progress}%`;
-            freeShippingPercent.textContent = `${Math.round(progress)}%`;
+            freeShippingPercent.textContent = `${progress}%`;
 
-            if (subtotal >= target) {
-                freeShippingText.innerHTML = `<span class="text-caatinga font-extrabold"><i class="fa-solid fa-check"></i> Parabéns! Você conquistou Frete Grátis!</span>`;
+            if (total >= target) {
+                freeShippingText.innerHTML = `<span class="text-verdeCacto font-bold"><i class="fa-solid fa-check"></i> Você ganhou Frete Grátis!</span>`;
             } else {
-                const remaining = target - subtotal;
-                freeShippingText.textContent = `Faltam R$ ${remaining.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} para Frete Grátis`;
+                freeShippingText.textContent = `Faltam R$ ${(target - total).toFixed(2).replace('.', ',')} para frete grátis`;
             }
 
             if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-12 space-y-2">
-                        <i class="fa-solid fa-bag-shopping text-4xl text-sol/20"></i>
-                        <p class="font-syne text-xs uppercase font-extrabold text-sol/60">Sua sacola está vazia</p>
-                    </div>
-                `;
-                return;
-            }
-
-            container.innerHTML = cart.map((item, index) => `
-                <div class="flex items-center space-x-3 p-3 bg-papel border-2 border-sol blob-shape-3">
-                    <img src="${item.imageMain}" alt="${item.name}" class="w-14 h-16 object-cover border border-sol rounded-lg">
-                    <div class="flex-1 space-y-1">
-                        <h4 class="font-display font-black text-xs uppercase text-cobalto">${item.name}</h4>
-                        <p class="font-syne text-[10px] text-terracota font-bold">TAMANHO: ${item.size}</p>
-                        <p class="font-mono text-xs font-extrabold text-caju">
-                            R$ ${(item.price * item.quantity).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                        </p>
-                        <div class="flex items-center space-x-2 pt-1 font-syne text-xs font-bold">
-                            <button onclick="updateCartQuantity(${index}, -1)" class="w-5 h-5 bg-amarelo border border-sol flex items-center justify-center">-</button>
-                            <span>${item.quantity}</span>
-                            <button onclick="updateCartQuantity(${index}, 1)" class="w-5 h-5 bg-amarelo border border-sol flex items-center justify-center">+</button>
+                cartItems.innerHTML = `<p class="text-center py-8 text-xs text-sertao/50 font-syne font-bold uppercase">Sua sacola está vazia.</p>`;
+            } else {
+                cartItems.innerHTML = cart.map((item, idx) => `
+                    <div class="flex items-center gap-3 p-3 bg-areia border border-sertao rounded-xl">
+                        <img src="${item.image}" class="w-12 h-14 object-cover rounded-lg">
+                        <div class="flex-1">
+                            <h4 class="font-display font-extrabold text-xs text-sertao uppercase">${item.name}</h4>
+                            <p class="text-[10px] font-bold text-couro">Tam: ${item.size}</p>
+                            <p class="font-mono text-xs font-bold text-terracota">R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</p>
+                            
+                            <div class="flex items-center gap-2 mt-1">
+                                <button onclick="updateCartQuantity(${idx}, -1)" class="w-5 h-5 bg-caqui border border-sertao flex items-center justify-center text-xs font-bold">-</button>
+                                <span class="text-xs font-bold">${item.quantity}</span>
+                                <button onclick="updateCartQuantity(${idx}, 1)" class="w-5 h-5 bg-caqui border border-sertao flex items-center justify-center text-xs font-bold">+</button>
+                            </div>
                         </div>
                     </div>
-                    <button onclick="updateCartQuantity(${index}, -${item.quantity})" class="text-sol/40 hover:text-caju p-2">
-                        <i class="fa-regular fa-trash-can text-sm"></i>
-                    </button>
-                </div>
-            `).join('');
-        }
-
-        /* Wishlist Toggle */
-        function toggleWishlist(productId) {
-            const badge = document.getElementById('wishlist-badge');
-            if (wishlist.has(productId)) {
-                wishlist.delete(productId);
-                showToast("Peça removida dos seus favoritos.");
-            } else {
-                wishlist.add(productId);
-                showToast("Peça salva nos seus favoritos!");
+                `).join('');
             }
-
-            if (wishlist.size > 0) {
-                badge.classList.remove('hidden');
-                badge.textContent = wishlist.size;
-            } else {
-                badge.classList.add('hidden');
-            }
-
-            renderProducts(products);
         }
 
-        /* Quick View Modal Logic */
-        function quickView(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-
-            const modalBody = document.getElementById('quick-view-body');
-            modalBody.innerHTML = `
-                <div class="h-[380px] bg-caatinga/20 border-r-2 border-sol overflow-hidden p-4 flex items-center justify-center">
-                    <img src="${product.imageMain}" alt="${product.name}" class="w-full h-full object-cover blob-shape-1 border-2 border-sol">
-                </div>
-                <div class="p-6 flex flex-col justify-between space-y-4">
-                    <div class="space-y-2">
-                        <span class="px-3 py-1 bg-amarelo text-cobalto border border-sol blob-shape-2 font-syne text-[9px] font-extrabold uppercase">${product.tag}</span>
-                        <h3 class="font-display font-black text-2xl uppercase text-cobalto">${product.name}</h3>
-                        <p class="font-mono text-xl font-extrabold text-caju">
-                            R$ ${product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                        </p>
-                        <p class="font-sans text-xs text-sol/80 leading-relaxed font-medium">${product.description}</p>
-                    </div>
-
-                    <div class="space-y-2">
-                        <span class="font-syne text-[10px] font-extrabold uppercase text-cobalto">Escolha o Tamanho:</span>
-                        <div class="flex space-x-2">
-                            ${product.sizes.map((s, idx) => `
-                                <button onclick="selectQuickSize(this, '${s}')" class="quick-size-btn w-9 h-9 border-2 border-sol font-syne text-xs font-bold ${idx === 0 ? 'bg-caju text-papel' : 'bg-papel text-sol'} rounded-full">
-                                    ${s}
-                                </button>
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <button onclick="addToCart(${product.id}, currentQuickSize); closeQuickView();" 
-                            class="w-full py-3.5 bg-caju hover:bg-caju-dark text-papel font-syne font-extrabold uppercase text-xs tracking-widest border-2 border-sol blob-button shadow-[3px_3px_0px_#0D3B66]">
-                        Adicionar à Sacola
-                    </button>
-                </div>
-            `;
-
-            window.currentQuickSize = product.sizes[0];
-
-            const modal = document.getElementById('quick-view-modal');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modal.querySelector('.id-modal-content').classList.remove('scale-95');
-        }
-
-        function selectQuickSize(btn, size) {
-            document.querySelectorAll('.quick-size-btn').forEach(b => {
-                b.classList.remove('bg-caju', 'text-papel');
-                b.classList.add('bg-papel', 'text-sol');
-            });
-            btn.classList.remove('bg-papel', 'text-sol');
-            btn.classList.add('bg-caju', 'text-papel');
-            window.currentQuickSize = size;
-        }
-
-        function closeQuickView() {
-            const modal = document.getElementById('quick-view-modal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-        }
-
-        /* Search Functions */
-        function openSearch() {
-            const modal = document.getElementById('search-modal');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            document.getElementById('search-input').focus();
-        }
-
-        function closeSearch() {
-            const modal = document.getElementById('search-modal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-        }
-
-        function handleSearchInput() {
-            const query = document.getElementById('search-input').value.toLowerCase().trim();
-            const resultsContainer = document.getElementById('search-results');
-
-            if (!query) {
-                resultsContainer.innerHTML = `<p class="font-syne text-xs text-sol/50 italic text-center py-4">Digite para buscar produtos no catálogo...</p>`;
-                return;
-            }
-
-            const matches = products.filter(p => p.name.toLowerCase().includes(query) || p.description.toLowerCase().includes(query));
-
-            if (matches.length === 0) {
-                resultsContainer.innerHTML = `<p class="font-syne text-xs text-sol/60 text-center py-4">Nenhum resultado para "${query}"</p>`;
-                return;
-            }
-
-            resultsContainer.innerHTML = matches.map(p => `
-                <div onclick="quickView(${p.id}); closeSearch();" class="flex items-center space-x-3 p-2 bg-papel border border-sol hover:bg-amarelo/30 cursor-pointer blob-shape-3">
-                    <img src="${p.imageMain}" alt="${p.name}" class="w-10 h-12 object-cover border border-sol rounded">
-                    <div>
-                        <h5 class="font-display font-black text-xs uppercase text-cobalto">${p.name}</h5>
-                        <p class="font-mono text-xs text-caju font-extrabold">R$ ${p.price.toFixed(2)}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        /* Drawer Controls */
+        /* DRAWER CONTROLS */
         function openCart() {
             const drawer = document.getElementById('cart-drawer');
             drawer.classList.remove('opacity-0', 'pointer-events-none');
@@ -1040,7 +586,75 @@
             drawer.querySelector('.id-cart-content').classList.add('translate-x-full');
         }
 
-        function setupEventListeners() {
+        /* QUICK VIEW MODAL */
+        function openQuickView(id) {
+            const p = products.find(prod => prod.id === id);
+            const body = document.getElementById('quick-view-body');
+
+            body.innerHTML = `
+                <div class="aspect-[4/5] bg-caqui/30 overflow-hidden">
+                    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 flex flex-col justify-between space-y-4">
+                    <div>
+                        <span class="px-2.5 py-1 bg-sertao text-areia font-syne text-[9px] font-extrabold uppercase rounded-full">${p.tag}</span>
+                        <h3 class="font-display font-extrabold text-2xl text-sertao uppercase mt-2">${p.name}</h3>
+                        <p class="font-mono text-lg font-extrabold text-terracota mt-1">R$ ${p.price.toFixed(2).replace('.', ',')}</p>
+                        <p class="text-xs text-sertao/80 leading-relaxed mt-3">${p.description}</p>
+                        <p class="text-[11px] font-bold text-couro mt-2">Gramatura: ${p.gramature}</p>
+                    </div>
+
+                    <button onclick="addToCart(${p.id}); closeQuickView();" class="w-full py-3 bg-terracota text-areia font-syne font-extrabold uppercase text-xs rounded-xl btn-veredas">
+                        Adicionar à Sacola
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('quick-view-modal').classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeQuickView() {
+            document.getElementById('quick-view-modal').classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        /* SEARCH MODAL */
+        function openSearch() {
+            document.getElementById('search-modal').classList.remove('opacity-0', 'pointer-events-none');
+            document.getElementById('search-input').focus();
+        }
+
+        function closeSearch() {
+            document.getElementById('search-modal').classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function handleSearchInput() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const results = document.getElementById('search-results');
+
+            if (!query) {
+                results.innerHTML = `<p class="font-syne text-xs text-sertao/50 text-center py-4">Digite para pesquisar no catálogo VEREDAS.</p>`;
+                return;
+            }
+
+            const matches = products.filter(p => p.name.toLowerCase().includes(query) || p.description.toLowerCase().includes(query));
+
+            if (matches.length === 0) {
+                results.innerHTML = `<p class="font-syne text-xs text-sertao/50 text-center py-4">Nenhum produto encontrado.</p>`;
+            } else {
+                results.innerHTML = matches.map(p => `
+                    <div onclick="openQuickView(${p.id}); closeSearch();" class="flex items-center gap-3 p-2 bg-areia border border-sertao rounded-lg cursor-pointer hover:bg-caqui">
+                        <img src="${p.image}" class="w-10 h-12 object-cover rounded">
+                        <div>
+                            <p class="font-display font-extrabold text-xs text-sertao uppercase">${p.name}</p>
+                            <p class="font-mono text-xs font-bold text-terracota">R$ ${p.price.toFixed(2)}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        /* SETUP LISTENERS */
+        function setupListeners() {
             document.getElementById('open-cart-btn').addEventListener('click', openCart);
             document.getElementById('close-cart-btn').addEventListener('click', closeCart);
             document.getElementById('open-search-btn').addEventListener('click', openSearch);
@@ -1058,49 +672,24 @@
                 mobileMenu.classList.add('opacity-0', 'pointer-events-none');
                 mobileMenu.querySelector('.id-mobile-drawer').classList.add('-translate-x-full');
             });
-
-            document.querySelectorAll('.mobile-nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-                    mobileMenu.querySelector('.id-mobile-drawer').classList.add('-translate-x-full');
-                });
-            });
         }
 
-        /* Toast Popup Feedback */
-        function showToast(message) {
+        function showToast(msg) {
             const container = document.getElementById('toast-container');
             const toast = document.createElement('div');
-            toast.className = 'bg-cobalto text-papel px-4 py-3 border-2 border-amarelo shadow-[4px_4px_0px_#D62828] font-syne text-xs font-extrabold flex items-center gap-3 transform translate-y-2 opacity-0 transition-all duration-300 pointer-events-auto blob-shape-3';
-            toast.innerHTML = `
-                <i class="fa-solid fa-sun text-amarelo text-sm"></i>
-                <span>${message}</span>
-            `;
-
+            toast.className = 'bg-sertao text-areia border-2 border-terracota px-4 py-3 rounded-xl font-syne text-xs font-bold shadow-lg flex items-center gap-2 pointer-events-auto';
+            toast.innerHTML = `<i class="fa-solid fa-check text-terracota"></i> ${msg}`;
             container.appendChild(toast);
 
-            setTimeout(() => {
-                toast.classList.remove('translate-y-2', 'opacity-0');
-            }, 10);
-
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-2');
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
+            setTimeout(() => toast.remove(), 3000);
         }
 
-        function simulateCheckout() {
+        function checkout() {
             if (cart.length === 0) {
                 showToast("Sua sacola está vazia!");
                 return;
             }
-            showToast("Redirecionando para o Checkout Antropofágico Seguro...");
-        }
-
-        function handleNewsletter(e) {
-            e.preventDefault();
-            showToast("Bem-vindo à Comunidade! Seu cupom de 10% OFF foi enviado ao e-mail.");
-            e.target.reset();
+            alert("A redirecionar para o Checkout Seguro VEREDAS®...");
         }
     </script>
 </body>
