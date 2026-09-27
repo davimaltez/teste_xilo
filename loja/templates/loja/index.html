@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VEREDAS — Caminhos que Vestem</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="#" onclick="navigate('home'); return false;">
+        <span class="brand-mark">Ψ</span>
+        <span>
+          <span class="brand-name">VEREDAS</span>
+          <span class="brand-sub">Caminhos que Vestem</span>
+        </span>
+      </a>
+
+      <nav class="nav">
+        <button class="active" data-view="home" onclick="navigate('home')">Início</button>
+        <button data-view="shop" onclick="navigate('shop')">Loja</button>
+        <button data-view="collections" onclick="navigate('collections')">Coleções</button>
+        <button data-view="about" onclick="navigate('about')">A VEREDAS</button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="menu-btn" onclick="openMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <button class="cart-btn" onclick="navigate('cart')">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-label">Sacola</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" onclick="backdropClose(event)">
+    <div class="mobile-panel">
+      <div class="mobile-top">
+        <strong class="brand-name">VEREDAS</strong>
+        <button class="close-menu" onclick="closeMenu()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav">
+        <button onclick="navigate('home'); closeMenu();">Início</button>
+        <button onclick="navigate('shop'); closeMenu();">Loja</button>
+        <button onclick="navigate('collections'); closeMenu();">Coleções</button>
+        <button onclick="navigate('about'); closeMenu();">A VEREDAS</button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Views -->
+  <!-- View: Home -->
+  <main class="view active" id="view-home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Coleção Raízes 2026</p>
+          <h1 class="hero-title">FÉ, ORIGEM<br>E <span>IDENTIDADE.</span></h1>
+          <p class="hero-text">Moda autoral criada a partir da cultura nordestina, da fé e de uma estética pensada para durar além de uma coleção.</p>
+          <div class="actions">
+            <button class="primary" onclick="navigate('shop')">
+              Ir para a loja <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button class="secondary" onclick="navigate('collections')">Conhecer a coleção</button>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <div class="hero-photo-frame">
+            <img src="imagens/img3.jpeg" alt="Camiseta VEREDAS">
+          </div>
+          <div class="caption">
+            <strong>Oversized Tee Raízes — Caqui</strong>
+            <span>R$ 189,00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Em destaque</p>
+            <h2 class="section-title">Peças da VEREDAS</h2>
+          </div>
+          <button class="text-link" onclick="navigate('shop')">Ver toda a loja →</button>
+        </div>
+        <div class="product-grid" id="home-grid"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container about-grid">
+        <div>
+          <p class="eyebrow">A marca</p>
+          <h2 class="section-title">Caminhos que vestem.</h2>
+        </div>
+        <div class="about-copy">
+          <p>A VEREDAS nasce do encontro entre fé, cultura nordestina e design atemporal. A proposta é criar peças com história, identidade e presença, sem depender de excesso.</p>
+          <button class="text-link" onclick="navigate('about')">Conhecer a VEREDAS →</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- View: Shop -->
+  <main class="view shop" id="view-shop">
+    <div class="container">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Catálogo</p>
+          <h1 class="page-title">Loja</h1>
+        </div>
+        <p class="count" id="product-count"></p>
+      </div>
+      <div class="filters hidden" id="filters"></div>
+      <div class="product-grid" id="shop-grid"></div>
+    </div>
+  </main>
+
+  <!-- View: Collections -->
+  <main class="view collections" id="view-collections">
+    <div class="container">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">VEREDAS</p>
+          <h1 class="page-title">Coleções</h1>
+        </div>
+      </div>
+      <article class="collection-card">
+        <div class="collection-img">
+          <img src="imagens/img2.jpeg" alt="Coleção Raízes">
+        </div>
+        <div class="collection-copy">
+          <p class="eyebrow">Coleção 01</p>
+          <h2>Raízes</h2>
+          <p>A primeira coleção da VEREDAS parte da fé, dos símbolos e da força visual do sertão para criar peças autorais com linguagem contemporânea.</p>
+          <button class="primary" onclick="openCollection('Raízes')">Ver coleção</button>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- View: About -->
+  <main class="view about" id="view-about">
+    <div class="container about-grid">
+      <div>
+        <p class="eyebrow">A VEREDAS</p>
+        <h1>Vestir também é carregar origem.</h1>
+      </div>
+      <div class="about-copy">
+        <p>A VEREDAS é uma marca autoral que nasce do encontro entre fé, cultura nordestina e design atemporal.</p>
+        <p>A proposta é traduzir referências do sertão, da religiosidade popular e da identidade nordestina em peças urbanas, amplas e visualmente limpas.</p>
+        <p>A marca começa pequena, mas a experiência da loja foi estruturada para crescer junto com novas peças, categorias e coleções.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- View: Product Details -->
+  <main class="view product-page" id="view-product">
+    <div class="container product-layout">
+      <div>
+        <div class="gallery-main">
+          <img id="main-image" src="" alt="">
+        </div>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+      <div class="product-info">
+        <div class="breadcrumb" id="breadcrumb"></div>
+        <h1 class="product-name" id="product-name"></h1>
+        <p class="product-price" id="product-price"></p>
+        <p class="product-desc" id="product-desc"></p>
+        <div class="points">
+          <span><i class="fa-solid fa-check"></i> Algodão premium 230 g/m²</span>
+          <span><i class="fa-solid fa-check"></i> Modelagem oversized</span>
+          <span><i class="fa-solid fa-check"></i> Feita no Brasil</span>
+        </div>
+        <div class="size-label">
+          <span>Escolha o tamanho</span>
+          <span id="selected-size">Selecionado: P</span>
+        </div>
+        <div class="sizes" id="sizes"></div>
+        <button class="add" onclick="addToCart()">Adicionar à sacola</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- View: Cart -->
+  <main class="view cart-page" id="view-cart">
+    <div class="container">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Seu pedido</p>
+          <h1 class="page-title">Sua sacola</h1>
+        </div>
+        <button class="text-link" onclick="navigate('shop')">← Continuar comprando</button>
+      </div>
+      <div id="cart-content"></div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <span class="footer-brand">VEREDAS®</span>
+      <span>Caminhos que vestem. Feito no Brasil.</span>
+      <span>© 2026 VEREDAS. Todos os direitos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+<script id="products-data" type="application/json">
+[
+    {% for produto in produtos %}
+    {
+        "id": {{ produto.id }},
+        "name": "{{ produto.nome|escapejs }}",
+
+        "collection": "{{ produto.colecao.nome|default:'Sem coleção'|escapejs }}",
+
+        "category": "{{ produto.categoria.nome|default:'Sem categoria'|escapejs }}",
+
+        "price": {{ produto.preco }},
+
+        "description": "{{ produto.descricao|escapejs }}",
+
+        "images": [
+            {% for imagem in produto.imagens.all %}
+            "{{ imagem.imagem.url|escapejs }}"{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ],
+
+        "sizes": [
+            {% for variacao in produto.variacoes.all %}
+            "{{ variacao.tamanho }}"{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ],
+
+        "stock": {
+            {% for variacao in produto.variacoes.all %}
+            "{{ variacao.tamanho }}": {{ variacao.estoque }}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+]
+</script>
+
+  <!-- Lógica da aplicação -->
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
