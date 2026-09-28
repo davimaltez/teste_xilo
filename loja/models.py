@@ -54,6 +54,11 @@ class Produto(models.Model):
 
     destaque = models.BooleanField(default=False)
 
+    ordem = models.PositiveIntegerField(
+        default=0,
+        help_text='Menores números aparecem primeiro, dentro de cada grupo de destaque.',
+    )
+
     criado_em = models.DateTimeField(auto_now_add=True)
 
     atualizado_em = models.DateTimeField(auto_now=True)

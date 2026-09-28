@@ -8,8 +8,30 @@ from .models import (
 )
 
 
+admin.site.site_header = 'VEREDAS — Administração'
+admin.site.site_title = 'VEREDAS'
+admin.site.index_title = 'Painel da Loja'
+
+
+class CamposAdminMixin:
+    def formfield_for_dbfield(self, db_field, request, **kwargs):
+        field = super().formfield_for_dbfield(db_field, request, **kwargs)
+        if field is not None:
+            labels = {
+                'descricao': 'Descrição',
+                'preco': 'Preço (R$)',
+                'colecao': 'Coleção',
+                'slug': 'Identificador do endereço',
+                'estoque': 'Quantidade disponível',
+            }
+            field.label = labels.get(db_field.name, field.label)
+            if db_field.name == 'slug':
+                field.help_text = 'Preenchido a partir do nome. Deve ser único.'
+        return field
+
+
 @admin.register(Categoria)
-class CategoriaAdmin(admin.ModelAdmin):
+class CategoriaAdmin(CamposAdminMixin, admin.ModelAdmin):
 
     list_display = (
         'nome',
@@ -22,7 +44,7 @@ class CategoriaAdmin(admin.ModelAdmin):
 
 
 @admin.register(Colecao)
-class ColecaoAdmin(admin.ModelAdmin):
+class ColecaoAdmin(CamposAdminMixin, admin.ModelAdmin):
 
     list_display = (
         'nome',
@@ -33,9 +55,12 @@ class ColecaoAdmin(admin.ModelAdmin):
         'slug': ('nome',)
     }
 
-class ImagemProdutoInline(admin.TabularInline):
+class ImagemProdutoInline(CamposAdminMixin, admin.TabularInline):
 
     model = ImagemProduto
+    ordering = ('ordem', 'id')
+    verbose_name = 'imagem'
+    verbose_name_plural = 'Imagens dos produtos'
     extra = 1
     fields = (
         'imagem',
@@ -43,9 +68,11 @@ class ImagemProdutoInline(admin.TabularInline):
     )
 
 
-class VariacaoProdutoInline(admin.TabularInline):
+class VariacaoProdutoInline(CamposAdminMixin, admin.TabularInline):
 
     model = VariacaoProduto
+    verbose_name = 'tamanho'
+    verbose_name_plural = 'Estoque e tamanhos'
     extra = 1
     fields = (
         'tamanho',
@@ -53,15 +80,34 @@ class VariacaoProdutoInline(admin.TabularInline):
     )
 
 @admin.register(Produto)
-class ProdutoAdmin(admin.ModelAdmin):
+class ProdutoAdmin(CamposAdminMixin, admin.ModelAdmin):
 
     list_display = (
         'nome',
+        'preco',
         'categoria',
         'colecao',
-        'preco',
         'ativo',
         'destaque',
+        'ordem',
+    )
+
+    list_editable = ('preco', 'ativo', 'destaque', 'ordem')
+    list_select_related = ('categoria', 'colecao')
+    ordering = ('-destaque', 'ordem', 'id')
+
+    fieldsets = (
+        ('Informações principais', {
+            'fields': ('nome', 'descricao', 'preco'),
+        }),
+        ('Organização da loja', {
+            'fields': ('categoria', 'colecao', 'ativo', 'destaque', 'ordem'),
+            'description': 'Ativo exibe o produto na loja. Destaque coloca o produto antes dos demais.',
+        }),
+        ('Endereço do produto', {
+            'fields': ('slug',),
+            'classes': ('collapse',),
+        }),
     )
 
     list_filter = (
@@ -87,7 +133,13 @@ class ProdutoAdmin(admin.ModelAdmin):
 
 
 @admin.register(ImagemProduto)
-class ImagemProdutoAdmin(admin.ModelAdmin):
+class ImagemProdutoAdmin(CamposAdminMixin, admin.ModelAdmin):
+
+    def changelist_view(self, request, extra_context=None):
+        return super().changelist_view(
+            request,
+            extra_context={'title': 'Imagens dos produtos', **(extra_context or {})},
+        )
 
     list_display = (
         'produto',
@@ -100,7 +152,16 @@ class ImagemProdutoAdmin(admin.ModelAdmin):
 
 
 @admin.register(VariacaoProduto)
-class VariacaoProdutoAdmin(admin.ModelAdmin):
+class VariacaoProdutoAdmin(CamposAdminMixin, admin.ModelAdmin):
+
+    def changelist_view(self, request, extra_context=None):
+        return super().changelist_view(
+            request,
+            extra_context={'title': 'Estoque por tamanho', **(extra_context or {})},
+        )
+
+    search_fields = ('produto__nome',)
+    list_select_related = ('produto',)
 
     list_display = (
         'produto',

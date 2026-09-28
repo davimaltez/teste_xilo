@@ -1,0 +1,89 @@
+/* Identidade VEREDAS, carregada somente no Django Admin. */
+:root,
+html[data-theme="light"],
+html[data-theme="dark"] {
+    color-scheme: light;
+    --primary: #3A5F43;
+    --secondary: #3A5F43;
+    --accent: #D8C4B0;
+    --primary-fg: #F4EFEA;
+    --body-fg: #1A1817;
+    --body-bg: #F4EFEA;
+    --body-quiet-color: #65564B;
+    --body-medium-color: #65564B;
+    --body-loud-color: #1A1817;
+    --header-color: #F4EFEA;
+    --header-branding-color: #F4EFEA;
+    --header-bg: #3A5F43;
+    --header-link-color: #F4EFEA;
+    --breadcrumbs-fg: #1A1817;
+    --breadcrumbs-link-fg: #1A1817;
+    --breadcrumbs-bg: #D8C4B0;
+    --link-fg: #8C5A3C;
+    --link-hover-color: #3A5F43;
+    --link-selected-fg: #3A5F43;
+    --hairline-color: #D8C4B0;
+    --border-color: #D8C4B0;
+    --darkened-bg: #EDE3DA;
+    --selected-bg: #D8C4B0;
+    --selected-row: #EDE3DA;
+    --button-fg: #FFFFFF;
+    --button-bg: #8C5A3C;
+    --button-hover-bg: #72472E;
+    --default-button-bg: #3A5F43;
+    --default-button-hover-bg: #2D4A34;
+    --close-button-bg: #65564B;
+    --close-button-hover-bg: #1A1817;
+    --object-tools-fg: #FFFFFF;
+    --object-tools-bg: #8C5A3C;
+    --object-tools-hover-bg: #72472E;
+}
+
+#header {
+    border-bottom: 4px solid #B85C38;
+}
+
+#site-name {
+    font-weight: 600;
+    letter-spacing: .03em;
+}
+
+.module,
+.inline-group,
+.submit-row {
+    border-radius: 6px;
+}
+
+.dashboard .module table {
+    width: 100%;
+}
+
+.dashboard .app-loja {
+    border: 1px solid #D8C4B0;
+}
+
+.app-auth.module caption {
+    background: #D8C4B0;
+}
+
+.app-auth.module caption a.section {
+    color: #1A1817;
+}
+
+#content-related {
+    background: #EDE3DA;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #B85C38;
+    outline-offset: 2px;
+}
+
+/* O painel usa sempre a paleta clara da marca. */
+.theme-toggle {
+    display: none;
+}

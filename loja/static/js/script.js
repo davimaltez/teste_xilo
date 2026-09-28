@@ -209,6 +209,15 @@ function addToCart() {
 
 function changeQty(index, delta) {
   if (!cart[index]) return;
+  if (delta > 0) {
+    const item = cart[index];
+    const produto = products.find(p => p.id === item.id);
+    const estoque = produto?.stock?.[item.size] || 0;
+    if (item.quantity + delta > estoque) {
+      toast('Quantidade máxima disponível em estoque.');
+      return;
+    }
+  }
   cart[index].quantity += delta;
   if (cart[index].quantity <= 0) {
     cart.splice(index, 1);
@@ -287,7 +296,43 @@ function renderCart() {
   `;
 }
 
-function checkout() {
+async function validarEstoqueCarrinho() {
+  const itens = cart.map(({ id, size, quantity }) => ({ id, size, quantity }));
+  try {
+    const csrfCookie = document.cookie.split('; ').find(cookie => cookie.startsWith('csrftoken='));
+    const response = await fetch('/api/validar-estoque/', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrfCookie ? decodeURIComponent(csrfCookie.split('=')[1]) : ''
+      },
+      body: JSON.stringify({ itens })
+    });
+    const resultado = await response.json();
+    if (!response.ok) {
+      toast(resultado.erro || 'Não foi possível validar o estoque. Tente novamente.');
+      return false;
+    }
+    if (!resultado.valido) {
+      toast(resultado.erros.map(item =>
+        `${item.produto} — tamanho ${item.tamanho}: solicitado ${item.quantidade_solicitada}, disponível ${item.quantidade_disponivel}.`
+      ).join(' '));
+      return false;
+    }
+    if (JSON.stringify(itens) !== JSON.stringify(cart.map(({ id, size, quantity }) => ({ id, size, quantity })))) {
+      toast('A sacola foi alterada. Valide o estoque novamente.');
+      return false;
+    }
+    return true;
+  } catch {
+    toast('Não foi possível validar o estoque. Tente novamente.');
+    return false;
+  }
+}
+
+async function checkout() {
+  if (!await validarEstoqueCarrinho()) return;
   alert('Checkout ainda não configurado.');
 }
 
