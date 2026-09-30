@@ -42,7 +42,7 @@ function card(p) {
 }
 
 function renderHome() {
-  document.getElementById('home-grid').innerHTML = products.slice(0, 3).map(card).join('');
+  document.getElementById('home-grid').innerHTML = products.filter(p => p.destaque).slice(0, 3).map(card).join('');
 }
 
 function renderShop() {
@@ -69,9 +69,9 @@ function setCategory(category) {
   renderShop();
 }
 
-function openCollection(collectionName) {
+function openCollection(collectionSlug) {
   navigate('shop');
-  const list = products.filter(p => p.collection === collectionName);
+  const list = products.filter(p => p.collectionSlug === collectionSlug);
   document.getElementById('product-count').textContent = `${list.length} ${list.length === 1 ? 'produto' : 'produtos'}`;
   document.getElementById('shop-grid').innerHTML = list.map(card).join('');
 }

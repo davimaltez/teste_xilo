@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -72,7 +72,9 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Coleção Raízes 2026</p>
+          {% if produto_hero.colecao %}
+          <p class="eyebrow">{{ produto_hero.colecao.nome }}</p>
+          {% endif %}
           <h1 class="hero-title">FÉ, ORIGEM<br>E <span>IDENTIDADE.</span></h1>
           <p class="hero-text">Moda autoral criada a partir da cultura nordestina, da fé e de uma estética pensada para durar além de uma coleção.</p>
           <div class="actions">
@@ -82,15 +84,19 @@
             <button class="secondary" onclick="navigate('collections')">Conhecer a coleção</button>
           </div>
         </div>
+        {% if produto_hero %}
         <div class="hero-photo">
           <div class="hero-photo-frame">
-            <img src="imagens/img3.jpeg" alt="Camiseta VEREDAS">
+            {% if imagem_hero.imagem %}
+            <img src="{{ imagem_hero.imagem.url }}" alt="{{ produto_hero.nome }}">
+            {% endif %}
           </div>
           <div class="caption">
-            <strong>Oversized Tee Raízes — Caqui</strong>
-            <span>R$ 189,00</span>
+            <strong>{{ produto_hero.nome }}</strong>
+            <span>{% language "pt-br" %}R$ {{ produto_hero.preco|floatformat:2 }}{% endlanguage %}</span>
           </div>
         </div>
+        {% endif %}
       </div>
     </section>
 
@@ -145,17 +151,21 @@
           <h1 class="page-title">Coleções</h1>
         </div>
       </div>
+      {% for colecao in colecoes %}
       <article class="collection-card">
         <div class="collection-img">
-          <img src="imagens/img2.jpeg" alt="Coleção Raízes">
+          {% if colecao.imagem %}
+          <img src="{{ colecao.imagem.url }}" alt="{{ colecao.nome }}">
+          {% endif %}
         </div>
         <div class="collection-copy">
-          <p class="eyebrow">Coleção 01</p>
-          <h2>Raízes</h2>
-          <p>A primeira coleção da VEREDAS parte da fé, dos símbolos e da força visual do sertão para criar peças autorais com linguagem contemporânea.</p>
-          <button class="primary" onclick="openCollection('Raízes')">Ver coleção</button>
+          <p class="eyebrow">Coleção {{ forloop.counter|stringformat:"02d" }}</p>
+          <h2>{{ colecao.nome }}</h2>
+          <p>{{ colecao.descricao|linebreaksbr }}</p>
+          <button class="primary" onclick="openCollection('{{ colecao.slug|escapejs }}')">Ver coleção</button>
         </div>
       </article>
+      {% endfor %}
     </div>
   </main>
 
@@ -234,7 +244,10 @@
     {% for produto in produtos %}
     {
         "id": {{ produto.id }},
+        "destaque": {{ produto.destaque|yesno:"true,false" }},
         "name": "{{ produto.nome|escapejs }}",
+
+        "collectionSlug": "{{ produto.colecao.slug|default:''|escapejs }}",
 
         "collection": "{{ produto.colecao.nome|default:'Sem coleção'|escapejs }}",
 

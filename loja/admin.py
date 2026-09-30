@@ -49,7 +49,11 @@ class ColecaoAdmin(CamposAdminMixin, admin.ModelAdmin):
     list_display = (
         'nome',
         'slug',
+        'ordem',
     )
+
+    fields = ('nome', 'slug', 'descricao', 'imagem', 'ordem')
+    ordering = ('ordem', 'id')
 
     prepopulated_fields = {
         'slug': ('nome',)

@@ -17,6 +17,20 @@ class Colecao(models.Model):
 
     slug = models.SlugField(unique=True)
 
+    imagem = models.ImageField(
+        'Imagem da coleção',
+        upload_to='colecoes/',
+        blank=True,
+        null=True,
+    )
+
+    descricao = models.TextField('Descrição', blank=True)
+
+    ordem = models.PositiveIntegerField(
+        default=0,
+        help_text='Menores números aparecem primeiro.',
+    )
+
     def __str__(self):
         return self.nome
 

@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
-from .models import Produto, VariacaoProduto, ImagemProduto
+from .models import Produto, VariacaoProduto, ImagemProduto, Colecao
 
 
 @ensure_csrf_cookie
@@ -19,12 +19,20 @@ def home(request):
     ).select_related(
         'categoria',
         'colecao'
-    ).order_by('-destaque', 'ordem', 'id')
+    ).order_by('ordem', 'id')
+
+    produto_hero = produtos.filter(destaque=True).first()
+    imagem_hero = next(iter(produto_hero.imagens.all()), None) if produto_hero else None
 
     return render(
         request,
         'loja/index.html',
-        {'produtos': produtos}
+        {
+            'produtos': produtos,
+            'colecoes': Colecao.objects.order_by('ordem', 'id'),
+            'produto_hero': produto_hero,
+            'imagem_hero': imagem_hero,
+        }
     )
 
 @require_POST
